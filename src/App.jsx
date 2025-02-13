@@ -12,7 +12,8 @@ function App() {
 
   const fetchTodos = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/todos");
+      
+      const response = await axios.get("https://backend-todo-app-coral.vercel.app/api/todos");
       setTodos(response.data);
       setLoading(false);
     } catch (error) {
@@ -26,7 +27,7 @@ function App() {
     if (!newTodo.trim()) return;
 
     try {
-      const response = await axios.post("http://localhost:5000/api/todos", {
+      const response = await axios.post("https://backend-todo-app-coral.vercel.app/todos", {
         text: newTodo,
         completed: false,
       });
@@ -39,7 +40,7 @@ function App() {
 
   const toggleTodo = async (id, completed) => {
     try {
-      await axios.put(`http://localhost:5000/api/todos/${id}`, {
+      await axios.put(`https://backend-todo-app-coral.vercel.app/todos/${id}`, {
         completed: !completed,
       });
       setTodos(
@@ -54,7 +55,7 @@ function App() {
 
   const deleteTodo = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/api/todos/${id}`);
+      await axios.delete(`https://backend-todo-app-coral.vercel.app/api/todos/${id}`);
       setTodos(todos.filter((todo) => todo._id !== id));
     } catch (error) {
       console.error("Error deleting todo:", error);
