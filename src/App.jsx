@@ -27,7 +27,7 @@ function App() {
     if (!newTodo.trim()) return;
 
     try {
-      const response = await axios.post("https://backend-todo-app-coral.vercel.app/todos", {
+      const response = await axios.post("https://backend-todo-app-coral.vercel.app/api/todos", {
         text: newTodo,
         completed: false,
       });
@@ -40,7 +40,7 @@ function App() {
 
   const toggleTodo = async (id, completed) => {
     try {
-      await axios.put(`https://backend-todo-app-coral.vercel.app/todos/${id}`, {
+      await axios.put(`https://backend-todo-app-coral.vercel.app/api/todos/${id}`, {
         completed: !completed,
       });
       setTodos(
